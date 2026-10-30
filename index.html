@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Prioritizer Framework</title>
+  <style>
+
+    body { font-family: sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+    .card-header { display: flex; justify-content: space-between; align-items: center; }
+    .criterion { margin: 12px 0; }
+    .criterion-title { display: flex; justify-content: space-between; }
+    .scale button { width: 32px; height: 32px; margin: 4px 2px; cursor: pointer; }
+    .scale button.active { background: #e0337a; color: white; border: none; }
+    .hint { color: #777; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI Prioritizer Framework</h1>
+    <p>Metodologia estratégica para priorizar iniciativas de IA.</p>
+  </header>
+
+  <section class="card">
+    <h2>1. Identificação</h2>
+    <label>Nome da iniciativa<br>
+      <input id="name" type="text" style="width:100%">
+    </label>
+    <br><br>
+    <label>Descrição<br>
+      <textarea id="description" rows="4" style="width:100%"></textarea>
+    </label>
+  </section>
+
+  <!-- O app.js desenha as dimensões aqui dentro -->
+  <main id="dimensions"></main>
+
+  <!-- A ordem importa: primeiro os critérios, depois o app que usa eles -->
+  <script src="js/criteria.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
