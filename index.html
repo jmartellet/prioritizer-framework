@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Prioritizer Framework</title>
   <style>
-
+    /* estilo — na etapa 3 rosa */
     body { font-family: sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }
     .card { border: 1px solid #ddd; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
     .card-header { display: flex; justify-content: space-between; align-items: center; }
@@ -14,6 +14,15 @@
     .scale button { width: 32px; height: 32px; margin: 4px 2px; cursor: pointer; }
     .scale button.active { background: #e0337a; color: white; border: none; }
     .hint { color: #777; }
+
+    /* etapa 2: card do score ao vivo, fixo no topo enquanto rola a página */
+    .live { position: sticky; top: 0; z-index: 10; background: white; text-align: center; }
+    .score { font-size: 48px; font-weight: bold; margin: 4px 0; }
+    .verdict { display: inline-block; padding: 4px 12px; border-radius: 999px; font-weight: bold; }
+    .score.go { color: #0f7a4a; }
+    .verdict.go { background: #c8f5dd; color: #0f7a4a; }
+    .score.backlog { color: #e08a00; }
+    .verdict.backlog { background: #fbe7b0; color: #8a5a00; }
   </style>
 </head>
 <body>
@@ -31,6 +40,13 @@
     <label>Descrição<br>
       <textarea id="description" rows="4" style="width:100%"></textarea>
     </label>
+  </section>
+
+  <!-- Etapa 2: score ao vivo (o app.js atualiza os números) -->
+  <section class="card live">
+    <small>LIVE SCORE</small>
+    <div id="score" class="score">-</div>
+    <span id="verdict" class="verdict">-</span>
   </section>
 
   <!-- O app.js desenha as dimensões aqui dentro -->
