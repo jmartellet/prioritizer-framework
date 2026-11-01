@@ -57,3 +57,10 @@ const DIMENSIONS = [
     ]
   }
 ];
+
+// =============================================================
+// Regra de decisão (etapa 2) ⋆⟢⋆⟢⋆⟢ 
+// nota final ACIMA do corte = candidato à execução.
+// para mudar a régua, altere só o número abaixo.
+// =============================================================
+const CUTOFF = 3.5;
