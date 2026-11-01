@@ -1,0 +1,211 @@
+/* =============================================================
+   style.css — o visual do AI Prioritizer Framework
+   rosa pq não sou obrigada
+   ============================================================= */
+
+/* 1. CORES E MEDIDAS
+   "Variáveis" do CSS: definidas uma vez, usadas no arquivo todo.
+   Para mudar o tom de rosa do app inteiro, troque só --pink. */
+:root {
+  --pink: #e0337a;
+  --pink-dark: #c2185b;
+  --pink-light: #fde4ee;
+  --bg: #f4f5f8;
+  --card: #ffffff;
+  --text: #1f2330;
+  --muted: #8a8fa0;
+  --border: #eceef3;
+  --green: #0f7a4a;
+  --green-light: #c8f5dd;
+  --amber: #e08a00;
+  --amber-light: #fbe7b0;
+  --radius: 16px;
+  --shadow: 0 4px 20px rgba(31, 35, 48, 0.06);
+}
+
+/* 2. BASE: fundo, fonte e cor do texto da página */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* 3. BARRA DO TOPO com o nome do app */
+.topbar {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 24px;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; max-width: 1100px; margin: 0 auto; }
+
+.logo {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+  color: white;
+  display: grid; place-items: center;
+  font-size: 20px;
+}
+
+.brand strong { display: block; font-size: 16px; }
+.brand small { color: var(--pink); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; }
+
+/* 4. LAYOUT EM DUAS COLUNAS: formulário à esquerda, score à direita */
+.layout {
+  max-width: 1100px;
+  margin: 32px auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* 5. CARDS: as caixas brancas */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.card h2 { font-size: 17px; margin: 0; }
+
+.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+
+/* a etiqueta "Peso: 30% · Média: 3.8" vira uma pílula rosa */
+.weight {
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* 6. IDENTIFICAÇÃO: o número "1" e os campos de texto */
+.step {
+  display: inline-grid; place-items: center;
+  width: 24px; height: 24px; margin-right: 8px;
+  border-radius: 8px;
+  background: var(--pink-light); color: var(--pink-dark);
+  font-size: 12px;
+}
+
+.field { display: block; margin-top: 16px; }
+
+.field span {
+  display: block; margin-bottom: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--muted); text-transform: uppercase;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  font: inherit; font-size: 14px;
+  resize: vertical;
+}
+
+/* quando o campo está selecionado, a borda fica rosa */
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--pink);
+  background: white;
+  box-shadow: 0 0 0 3px var(--pink-light);
+}
+
+/* 7. CRITÉRIOS: título e nota em cima, botões e dica embaixo */
+.criterion {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+
+.criterion-title {
+  grid-column: 1 / -1;
+  display: flex; justify-content: space-between;
+  font-size: 14px; margin-bottom: 8px;
+}
+
+.value { color: var(--pink); font-weight: 800; }
+
+.hint { color: var(--muted); font-size: 12px; font-style: italic; }
+
+/* os botões 1 a 5 ficam juntos, como um seletor */
+.scale {
+  display: inline-flex;
+  justify-self: start;
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.scale button {
+  width: 34px; height: 34px;
+  border: none; border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit; font-size: 13px; font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.scale button:hover { background: var(--pink-light); color: var(--pink-dark); }
+
+.scale button.active {
+  background: var(--pink);
+  color: white;
+  box-shadow: 0 2px 8px rgba(224, 51, 122, 0.35);
+}
+
+/* 8. LIVE SCORE: a coluna da direita acompanha a rolagem (sticky) */
+.side {
+  position: sticky;
+  top: 24px;
+}
+
+.live { text-align: center; }
+
+.live small { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; }
+
+.score { font-size: 56px; font-weight: 800; margin: 4px 0 12px; letter-spacing: -0.02em; }
+
+.verdict {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 12px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+
+/* verde = candidato à execução / amarelo = backlog */
+.score.go { color: var(--green); }
+.verdict.go { background: var(--green-light); color: var(--green); }
+.score.backlog { color: var(--amber); }
+.verdict.backlog { background: var(--amber-light); color: #8a5a00; }
+
+/* 9. CELULAR: em telas pequenas, vira uma coluna só
+   e o score gruda no topo da tela */
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; margin-top: 16px; padding: 0 16px; }
+  .side { order: -1; position: sticky; top: 0; z-index: 10; }
+  .live { padding: 12px; margin-bottom: 12px; }
+  .score { font-size: 36px; margin: 0 0 6px; }
+  .criterion { grid-template-columns: 1fr; row-gap: 6px; }
+}
