@@ -65,3 +65,28 @@ O 3,5 foi escolhido porque, na escala de 1 a 5, o 3 é o ponto neutro: um projet
 As contas do código são as mesmas de uma planilha: `MÉDIA` para cada dimensão, `SOMARPRODUTO` com os pesos e `SE` para o veredito. E o HTML e o JavaScript "conversam" pelos `id`s: o código procura a etiqueta `score` na página e escreve a nota dentro dela.
 
 De calculadora a ferramenta de decisão: como a nota se atualiza a cada clique, fica claro na hora quais critérios mais pesam no resultado. Em vez de perguntar "essa ideia é boa?", o time passa a discutir "o que falta para ela valer o investimento?", com base em dados, e não em opinião.
+
+---
+
+## Etapa 3: visual 
+
+### O que fiz
+
+- Separei o visual em um arquivo próprio, `css/style.css`. O HTML agora só aponta para ele com um `<link>`.
+- Criei variáveis de cor (`--pink`, `--green`, `--amber`...): o tom de rosa é definido uma vez e usado no app inteiro.
+- Montei o layout em duas colunas: formulário à esquerda e live score à direita, acompanhando a rolagem.
+- Adaptei para celular: em telas pequenas, vira uma coluna só e o score fica grudado no topo.
+- Usei a fonte Inter, do Google Fonts.
+
+### Por que rosa
+
+Rosa porque não sou obrigada 💅
+
+Ferramenta de trabalho não precisa ser cinza nem azul corporativo. O projeto nasceu de uma dor minha e foi pensado para o meu uso, então o visual também tem a minha cara.
+
+### O que aprendi
+
+- **HTML × CSS:** o HTML diz *o que* aparece na tela; o CSS diz *como* aparece.
+- **Variáveis de cor:** funcionam como o `criteria.js`: definir uma vez, usar em todo lugar. Para mudar o rosa do app inteiro, troco uma linha.
+- **Responsividade:** o `@media` adapta o layout para telas pequenas, como a do celular.
+- **Organização:** separar o projeto em arquivos (HTML para a estrutura, CSS para o visual, JS para a lógica) deixa cada parte mais fácil de entender e de mudar.
