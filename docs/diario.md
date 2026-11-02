@@ -90,3 +90,27 @@ Ferramenta de trabalho não precisa ser cinza nem azul corporativo. O projeto na
 - **Variáveis de cor:** funcionam como o `criteria.js`: definir uma vez, usar em todo lugar. Para mudar o rosa do app inteiro, troco uma linha.
 - **Responsividade:** o `@media` adapta o layout para telas pequenas, como a do celular.
 - **Organização:** separar o projeto em arquivos (HTML para a estrutura, CSS para o visual, JS para a lógica) deixa cada parte mais fácil de entender e de mudar.
+
+---
+
+## Etapa 4: página de resultados 📊
+
+### O que fiz
+
+- Criei o arquivo [`js/results.js`](../js/results.js), que monta o "Relatório de Priorização".
+- Adicionei o botão **Ver resultados** e o **← Voltar**: as duas telas ficam no mesmo arquivo, e o código só mostra uma e esconde a outra.
+- Desenhei o radar **Footprint de Valor** com a biblioteca [Chart.js](https://www.chartjs.org/), mostrando a média de cada dimensão.
+- Criei as barras por dimensão: verdes acima de 3,5 e amarelas abaixo, usando a mesma régua do veredito.
+
+### Por que um radar
+
+A nota final resume tudo em um número, mas esconde *onde* está a força e *onde* está o risco de cada projeto. Pense em dois projetos com a mesma nota 3,6: um equilibrado, com todas as dimensões perto de 3,6, e outro com Impacto 5 e Maturidade 2. A nota é igual, mas o "formato" do radar é bem diferente.
+
+Com o radar, dá para ver de forma simples onde o projeto é forte e onde ele é fraco. O primeiro é uma aposta segura. O segundo tem um potencial enorme, mas a empresa ainda não tem dados ou estrutura para entregá-lo. A decisão deixa de ser só "sim ou não" e passa a ser "o que precisamos resolver antes", por exemplo, investir primeiro na qualidade dos dados.
+
+### O que aprendi
+
+- **Reaproveitar funções:** o `results.js` usa as funções de cálculo do `app.js` (`finalScore`, `verdict`, `dimensionAverage`) sem refazer nenhuma conta. Se eu mudar uma regra, ela vale nas duas telas.
+- **Usar uma biblioteca pronta:** em vez de desenhar o radar do zero, usei o Chart.js. Eu só entrego os nomes, os números e as cores, e ele desenha.
+- **Mostrar e esconder telas:** as duas telas ficam no mesmo arquivo, e o atributo `hidden` funciona como uma cortina: abre uma e fecha a outra, sem carregar uma página nova.
+- **Regra de três nas barras:** `(média ÷ 5) × 100` transforma a nota em porcentagem. Nota 5 = barra cheia, nota 4 = 80%.
