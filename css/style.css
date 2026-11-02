@@ -209,3 +209,73 @@ body {
   .score { font-size: 36px; margin: 0 0 6px; }
   .criterion { grid-template-columns: 1fr; row-gap: 6px; }
 }
+/* =============================================================
+   ETAPA 4: PÁGINA DE RESULTADOS
+   ============================================================= */
+
+/* garante que telas marcadas como "hidden" fiquem escondidas */
+[hidden] { display: none !important; }
+
+/* botão rosa "Ver resultados" */
+.btn-primary {
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: var(--pink);
+  color: white;
+  font: inherit; font-weight: 700;
+  cursor: pointer;
+}
+.btn-primary:hover { background: var(--pink-dark); }
+
+/* área dos resultados */
+.results { max-width: 1100px; margin: 32px auto; padding: 0 24px; }
+
+.results-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.results-header h1 { font-size: 22px; margin: 0; }
+.results-header small { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; }
+
+/* duas colunas: radar | veredito */
+.results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+
+.results-title { text-align: center; text-transform: uppercase; letter-spacing: 0.1em; font-size: 14px; }
+
+/* caixa da nota final */
+.final-box {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0 20px;
+  text-align: center;
+}
+.final-box .verdict { display: inline-block; }
+
+/* barras por dimensão */
+.bar-row { margin-bottom: 12px; }
+.bar-label { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+.bar-track { height: 8px; background: var(--bg); border-radius: 999px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 999px; }
+.bar-fill.go { background: var(--green); }
+.bar-fill.backlog { background: var(--amber); }
+
+/* botão "← Voltar" */
+.btn-back {
+  display: block;
+  margin: 8px auto 40px;
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font: inherit; font-weight: 600;
+  cursor: pointer;
+}
+.btn-back:hover { border-color: var(--pink); color: var(--pink); }
+
+/* celular: resultados em uma coluna */
+@media (max-width: 800px) {
+  .results { padding: 0 16px; margin-top: 16px; }
+  .results-grid { grid-template-columns: 1fr; }
+}
