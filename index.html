@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Prioritizer Framework</title>
 
-  <!-- etapa 3: fonte Inter (google fonts) e o arquivo de estilo -->
+  <!-- Etapa 3: fonte Inter (Google Fonts) e o arquivo de estilo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -22,8 +22,9 @@
     </div>
   </header>
 
-  <div class="layout">
-    <!-- coluna da esquerda: identificação e critérios -->
+  <!-- ===================== TELA 1: AVALIAÇÃO ===================== -->
+  <div class="layout" id="eval-view">
+    <!-- Coluna da esquerda: identificação e critérios -->
     <div class="form-col">
       <section class="card">
         <h2><span class="step">1</span>Identificação</h2>
@@ -47,12 +48,49 @@
         <small>LIVE SCORE</small>
         <div id="score" class="score">-</div>
         <span id="verdict" class="verdict">-</span>
+        <!-- Etapa 4: botão que abre a página de resultados -->
+        <button id="btn-results" class="btn-primary" type="button">Ver resultados</button>
       </section>
     </aside>
   </div>
 
-  <!-- a ordem importa: primeiro os critérios, depois o app que usa eles -->
+  <!-- ===================== TELA 2: RESULTADOS (Etapa 4) ===================== -->
+  <div class="results" id="results-view" hidden>
+    <div class="results-header">
+      <div class="logo">△</div>
+      <div>
+        <h1>Relatório de Priorização</h1>
+        <small>INICIATIVA: <span id="result-name"></span></small>
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <!-- Gráfico de radar -->
+      <section class="card">
+        <h2 class="results-title">Footprint de Valor</h2>
+        <canvas id="radar"></canvas>
+      </section>
+
+      <!-- Nota final, veredito e barras -->
+      <section class="card">
+        <h2>Veredito Final</h2>
+        <div class="final-box">
+          <div id="result-score" class="score">-</div>
+          <span id="result-verdict" class="verdict">-</span>
+        </div>
+        <div id="result-bars"></div>
+      </section>
+    </div>
+
+    <button id="btn-back" class="btn-back" type="button">← Voltar</button>
+  </div>
+
+  <!-- Etapa 4: biblioteca de gráficos Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+
+  <!-- A ordem importa: critérios → app (cálculos) → resultados (usa os cálculos) -->
   <script src="js/criteria.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/results.js"></script>
 </body>
 </html>
