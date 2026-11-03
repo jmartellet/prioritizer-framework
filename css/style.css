@@ -326,3 +326,79 @@ body {
   /* força as cores de fundo (barras, veredito) a aparecerem no PDF */
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+/* =============================================================
+   ETAPA 6: AI STRATEGIC ADVISOR
+   ============================================================= */
+
+/* card rosa do advisor */
+.advisor {
+  background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+  border: none;
+  color: white;
+}
+.advisor h2 { color: white; }
+.advisor-intro { font-size: 13px; opacity: 0.9; margin: 4px 0 0; }
+
+/* botão branco (sobre fundo rosa) */
+.btn-small.white { background: white; border-color: white; color: var(--pink-dark); }
+.btn-small.white:hover { background: var(--pink-light); }
+.btn-small:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* caixa da chave de API */
+.key-box {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 12px;
+}
+.key-box label { display: block; font-weight: 700; margin-bottom: 8px; }
+.key-box a { color: white; }
+.key-box small { display: block; margin-top: 8px; opacity: 0.9; }
+.key-row { display: flex; gap: 8px; }
+.key-row input {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  font: inherit;
+}
+#ai-key-saved { display: flex; justify-content: space-between; align-items: center; }
+#ai-key-saved small { margin: 0; }
+
+.link-button {
+  background: none; border: none; padding: 0;
+  color: white; text-decoration: underline;
+  font: inherit; font-size: 12px; cursor: pointer;
+}
+
+.ai-error { margin: 12px 0 0; padding: 10px; border-radius: 8px; background: white; color: #b00020; font-size: 12px; }
+
+/* o parecer */
+.ai-output { border-top: 4px solid var(--pink); }
+.ai-output h3 {
+  margin: 16px 0 6px;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--pink);
+}
+.ai-output p { margin: 0; font-size: 13px; line-height: 1.6; }
+
+.ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.risk-box { margin-top: 16px; padding: 14px; border-radius: 10px; background: var(--pink-light); }
+.risk-box h3 { margin-top: 0; }
+
+.exec-box { margin-top: 16px; padding: 18px; border-radius: 12px; background: #12141c; color: white; }
+.exec-box h3 { margin-top: 0; }
+.exec-box p { font-size: 15px; font-weight: 700; }
+
+/* celular: parecer em uma coluna */
+@media (max-width: 800px) {
+  .ai-grid { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* impressão: o PDF inclui o parecer, mas não o card da chave */
+@media print {
+  .advisor { display: none !important; }
+  .ai-output { break-inside: avoid; }
+}
