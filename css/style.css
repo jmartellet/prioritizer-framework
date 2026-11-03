@@ -279,3 +279,50 @@ body {
   .results { padding: 0 16px; margin-top: 16px; }
   .results-grid { grid-template-columns: 1fr; }
 }
+/* =============================================================
+   ETAPA 5: EXPORTAÇÕES
+   ============================================================= */
+
+/* botões pequenos: CSV, PDF e Copiar */
+.export-buttons { display: flex; gap: 6px; }
+
+.btn-small {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit; font-size: 11px; font-weight: 700;
+  cursor: pointer;
+}
+.btn-small:hover { border-color: var(--pink); color: var(--pink); }
+
+.btn-small.pink { background: var(--pink); border-color: var(--pink); color: white; }
+.btn-small.pink:hover { background: var(--pink-dark); color: white; }
+
+/* caixa escura do Jira, com cara de código */
+.jira { background: #12141c; border-color: #12141c; color: white; margin-top: 4px; }
+.jira h2 { color: white; font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; }
+
+.jira pre {
+  margin: 12px 0 0;
+  padding: 16px;
+  max-height: 260px;
+  overflow: auto;
+  background: #000;
+  border-radius: 10px;
+  color: #d6d8e0;
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* IMPRESSÃO / PDF: só o relatório, sem botões nem barra do topo */
+@media print {
+  body { background: white; }
+  .topbar, .export-buttons, .btn-back, .jira { display: none !important; }
+  .results { margin: 0; padding: 0; max-width: none; }
+  .card { box-shadow: none; break-inside: avoid; }
+  /* força as cores de fundo (barras, veredito) a aparecerem no PDF */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
