@@ -73,7 +73,14 @@
 
       <!-- Nota final, veredito e barras -->
       <section class="card">
-        <h2>Veredito Final</h2>
+        <div class="card-header">
+          <h2>Veredito Final</h2>
+          <!-- Etapa 5: botões de exportação -->
+          <div class="export-buttons">
+            <button id="btn-csv" class="btn-small" type="button">CSV</button>
+            <button id="btn-pdf" class="btn-small pink" type="button">PDF</button>
+          </div>
+        </div>
         <div class="final-box">
           <div id="result-score" class="score">-</div>
           <span id="result-verdict" class="verdict">-</span>
@@ -82,15 +89,25 @@
       </section>
     </div>
 
+    <!-- Etapa 5: texto pronto para colar no Jira -->
+    <section class="card jira">
+      <div class="card-header">
+        <h2>Jira Cloud Export</h2>
+        <button id="btn-copy" class="btn-small pink" type="button">Copiar Markdown</button>
+      </div>
+      <pre id="jira-text"></pre>
+    </section>
+
     <button id="btn-back" class="btn-back" type="button">← Voltar</button>
   </div>
 
   <!-- Etapa 4: biblioteca de gráficos Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
 
-  <!-- A ordem importa: critérios → app (cálculos) → resultados (usa os cálculos) -->
+  <!-- A ordem importa: critérios → app (cálculos) → resultados → exportações -->
   <script src="js/criteria.js"></script>
   <script src="js/app.js"></script>
   <script src="js/results.js"></script>
+  <script src="js/export.js"></script>
 </body>
 </html>
