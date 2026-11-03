@@ -114,3 +114,28 @@ Com o radar, dá para ver de forma simples onde o projeto é forte e onde ele é
 - **Usar uma biblioteca pronta:** em vez de desenhar o radar do zero, usei o Chart.js. Eu só entrego os nomes, os números e as cores, e ele desenha.
 - **Mostrar e esconder telas:** as duas telas ficam no mesmo arquivo, e o atributo `hidden` funciona como uma cortina: abre uma e fecha a outra, sem carregar uma página nova.
 - **Regra de três nas barras:** `(média ÷ 5) × 100` transforma a nota em porcentagem. Nota 5 = barra cheia, nota 4 = 80%.
+
+---
+
+## Etapa 5: exportações 📤
+
+### O que fiz
+
+- Criei o arquivo [`js/export.js`](../js/export.js) com três formas de levar o relatório para fora do app:
+  - **CSV:** uma linha por critério, pronto para abrir no Excel em português (separador `;`, vírgula nos decimais e acentos certos).
+  - **PDF:** pela impressão do navegador (`window.print()`), com um estilo de impressão próprio (`@media print`) que esconde botões e mantém as cores.
+  - **Jira:** um texto no formato do Jira (*wiki markup*), com sumário executivo e tabela por dimensão, copiado com um clique.
+
+### Por que exportar
+
+Uma ferramenta de decisão que não conversa com as ferramentas do time acaba esquecida. Por isso, cada formato tem um destino:
+
+- **CSV:** para quem quer comparar várias iniciativas numa planilha.
+- **PDF:** para levar a decisão a um comitê ou à liderança.
+- **Jira:** para o time de produto ou tecnologia transformar a iniciativa em backlog.
+
+### O que aprendi
+
+- **CSV para o Excel brasileiro:** usar `;` como separador, vírgula nos decimais e o "aviso invisível" `\uFEFF` no começo do arquivo para os acentos aparecerem certos.
+- **Estilo de impressão:** o `@media print` muda a página só na hora de imprimir, sem afetar a tela.
+- **Funções ajudantes:** funções pequenas, que fazem uma coisa só, deixam o código mais fácil de ler e de reaproveitar.
