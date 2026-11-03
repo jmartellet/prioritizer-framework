@@ -89,6 +89,56 @@
       </section>
     </div>
 
+    <!-- Etapa 6: AI Strategic Advisor (Gemini) -->
+    <section class="card advisor">
+      <div class="card-header">
+        <h2>✧ AI Strategic Advisor</h2>
+        <button id="btn-advisor" class="btn-small white" type="button" disabled>Gerar parecer IA</button>
+      </div>
+      <p class="advisor-intro">Análise técnica e estratégica personalizada, baseada nas notas e na descrição da iniciativa.</p>
+
+      <!-- Campo da chave: aparece só quando não há chave salva -->
+      <div id="ai-key-form" class="key-box">
+        <label for="ai-key">Sua chave do Gemini (gratuita em <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a>)</label>
+        <div class="key-row">
+          <input id="ai-key" type="password" placeholder="Cole sua chave aqui" autocomplete="off">
+          <button id="btn-save-key" class="btn-small white" type="button">Salvar</button>
+        </div>
+        <small>🔒 A chave fica salva só neste navegador e vai direto para o Google. Ela nunca é enviada ao GitHub.</small>
+      </div>
+
+      <!-- Aviso de chave salva -->
+      <div id="ai-key-saved" class="key-box" hidden>
+        <small>🔒 Chave salva neste navegador.</small>
+        <button id="btn-forget-key" class="link-button" type="button">Esquecer chave</button>
+      </div>
+
+      <p id="ai-error" class="ai-error" hidden></p>
+    </section>
+
+    <!-- Etapa 6: o parecer gerado (aparece depois de clicar em "Gerar parecer IA") -->
+    <section id="ai-output" class="card ai-output" hidden>
+      <h2><span class="step">AI</span>Parecer AI Strategic Advisor</h2>
+      <div class="ai-grid">
+        <div>
+          <h3>Análise de negócio</h3>
+          <p id="ai-analise"></p>
+          <div class="risk-box">
+            <h3>Riscos &amp; mitigação</h3>
+            <p id="ai-riscos"></p>
+          </div>
+        </div>
+        <div>
+          <div class="exec-box">
+            <h3>Veredito executivo</h3>
+            <p id="ai-veredito"></p>
+          </div>
+          <h3>Caminho para o MVP</h3>
+          <p id="ai-mvp"></p>
+        </div>
+      </div>
+    </section>
+
     <!-- Etapa 5: texto pronto para colar no Jira -->
     <section class="card jira">
       <div class="card-header">
@@ -104,10 +154,11 @@
   <!-- Etapa 4: biblioteca de gráficos Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
 
-  <!-- A ordem importa: critérios → app (cálculos) → resultados → exportações -->
+  <!-- A ordem importa: critérios → app (cálculos) → resultados → exportações → IA -->
   <script src="js/criteria.js"></script>
   <script src="js/app.js"></script>
   <script src="js/results.js"></script>
   <script src="js/export.js"></script>
+  <script src="js/advisor.js"></script>
 </body>
 </html>
