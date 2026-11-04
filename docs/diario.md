@@ -139,3 +139,31 @@ Uma ferramenta de decisão que não conversa com as ferramentas do time acaba es
 - **CSV para o Excel brasileiro:** usar `;` como separador, vírgula nos decimais e o "aviso invisível" `\uFEFF` no começo do arquivo para os acentos aparecerem certos.
 - **Estilo de impressão:** o `@media print` muda a página só na hora de imprimir, sem afetar a tela.
 - **Funções ajudantes:** funções pequenas, que fazem uma coisa só, deixam o código mais fácil de ler e de reaproveitar.
+
+---
+
+## Etapa 6: AI Strategic Advisor ✧
+
+### O que fiz
+
+- Criei o arquivo [`js/advisor.js`](../js/advisor.js), que gera um parecer estratégico com o Gemini (`gemini-3.8-flash`).
+- O app monta um *prompt* automático com o nome, a descrição, o score e cada nota da iniciativa, e pede a resposta em JSON com 4 partes: análise de negócio, riscos e mitigação, veredito executivo e caminho para o MVP.
+- Cada pessoa usa a própria chave de API, que fica salva só no navegador dela (`localStorage`) e nunca vai para o GitHub.
+- A resposta da IA entra na página como texto puro (`textContent`), sem risco de virar código.
+
+### Por que cada um usa a própria chave
+
+Escolhi que cada pessoa use a própria chave do Gemini por dois motivos:
+
+- **Segurança:** uma chave escrita no código de um repositório público pode ser copiada por qualquer pessoa, que passaria a usar (e gastar) a minha conta. Assim, nenhuma chave fica exposta.
+- **Acesso sem burocracia:** qualquer pessoa consegue usar o app de graça, criando a própria chave em poucos minutos no Google AI Studio, sem depender de mim nem de um servidor.
+
+### O que aprendi
+
+- **API e chave de API:** uma API é a "porta" pela qual um programa conversa com outro serviço, no caso o Gemini. A chave é a identificação de quem está pedindo.
+- **`fetch` com `async/await`:** o app envia o pedido pela internet e espera a resposta sem travar a página.
+- **O prompt define a qualidade:** quanto mais contexto a IA recebe (notas, dicas dos critérios, descrição), mais específico é o parecer.
+- **Resposta em JSON:** pedir um formato fixo permite separar o parecer em caixas diferentes na tela.
+- **`localStorage`:** uma "gaveta" do navegador para guardar informações só no computador de quem usa.
+- **Segurança com `textContent`:** a resposta da IA entra como texto puro, sem risco de virar código na página.
+- **A documentação muda rápido:** os modelos do Gemini mudaram de versão várias vezes. Por isso, o nome do modelo fica numa linha só, fácil de trocar.
